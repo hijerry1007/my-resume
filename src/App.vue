@@ -1,18 +1,23 @@
 <template>
   <div id="app">
-    <transition name="slide-fade">
+    <transition name="slide-fade" mode="out-in">
       <router-view />
     </transition>
   </div>
 </template>
 
 <style>
+html {
+  height: 100%;
+  margin: 0;
+}
 body {
   background-image: url(../public/img/bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  margin: 0;
 }
 
 #app {
@@ -30,7 +35,7 @@ body {
 
 .slide-fade-enter,
 .slide-fade-leave-active {
-  transform: translateX(-50%);
+  transform: translateY(-50%);
   opacity: 0;
 }
 </style>

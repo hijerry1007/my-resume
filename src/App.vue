@@ -11,12 +11,33 @@ html {
   height: 100%;
   margin: 0;
 }
-body {
+
+html::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../public/img/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.resume {
+  width: 100%;
+  height: 100%;
   background-image: url(../public/img/bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
   margin: 0;
 }
 
@@ -26,7 +47,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  position: relative;
+  z-index: 1;
 }
+
+/* #app::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../public/img/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+} */
 
 .slide-fade-enter-active,
 .slide-fade-leave-active {

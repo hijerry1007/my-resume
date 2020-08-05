@@ -1,5 +1,6 @@
 <template>
   <div id="nav" v-hotkey="keymap">
+    <h1>Jerry's Resume</h1>
     <div class="aboutMe">
       <span v-if="content1" id="content1"></span>
       <p>About Me</p>

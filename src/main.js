@@ -3,12 +3,20 @@ import App from './App.vue'
 import router from './router'
 import VueHotKey from 'v-hotkey'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faInfoCircle, faBirthdayCake, faEnvelopeSquare, faMapMarkerAlt, faTree, faGamepad, faBasketballBall, faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons'
+import { faInfoCircle, faBirthdayCake, faEnvelopeSquare, faMapMarkerAlt, faTree, faGamepad, faBasketballBall, faSuitcaseRolling, faUser, faEnvelope, faCommentDots, faMobileAlt } from '@fortawesome/free-solid-svg-icons'
 // import { brands } from '@fortawesome/free-brands-svg-icons'
 // import { regular } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import * as VueGoogleMaps from 'vue2-google-maps'
 
-library.add(faInfoCircle, faBirthdayCake, faEnvelopeSquare, faMapMarkerAlt, faTree, faGamepad, faBasketballBall, faSuitcaseRolling)
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyCi9FPS8AVTG2rtnCp3dC-Dw_HJCj1KkCQ',
+    libraries: 'places',
+  }
+})
+
+library.add(faInfoCircle, faBirthdayCake, faEnvelopeSquare, faMapMarkerAlt, faTree, faGamepad, faBasketballBall, faSuitcaseRolling, faUser, faEnvelope, faCommentDots, faMobileAlt)
 // library.add(brands)
 // library.add(regular)
 Vue.component('font-awesome-icon', FontAwesomeIcon)

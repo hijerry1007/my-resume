@@ -135,6 +135,7 @@ $time: 1.2s;
   width: 1200px;
   margin: 0 auto;
   border-bottom: 3px solid;
+  letter-spacing: 0.5em;
 }
 
 .me-card {

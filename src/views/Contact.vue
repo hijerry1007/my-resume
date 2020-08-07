@@ -135,8 +135,7 @@ export default {
 .contact {
   display: flex;
   flex-flow: column;
-  margin-top: 3rem;
-  height: 100%;
+  padding-top: 1rem;
   ul {
     list-style: none;
     display: flex;

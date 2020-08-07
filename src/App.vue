@@ -10,23 +10,11 @@
 html {
   height: 100%;
   margin: 0;
-}
-
-html::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background: url(../public/img/test.jpg);
+  background-image: url(../public/img/bg.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
-  opacity: 0.2;
+  position: relative;
 }
 
 #app {
@@ -37,8 +25,6 @@ html::after {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  position: relative;
-  z-index: 1;
 }
 
 .slide-fade-enter-active,

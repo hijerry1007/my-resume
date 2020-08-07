@@ -127,8 +127,7 @@ $time: 1.2s;
 .aboutme {
   display: flex;
   flex-flow: column;
-  margin-top: 3rem;
-  height: 100%;
+  padding-top: 1rem;
 }
 
 .title {

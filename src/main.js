@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import VueHotKey from 'v-hotkey'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faInfoCircle, faBirthdayCake, faEnvelopeSquare, faMapMarkerAlt, faTree, faGamepad, faBasketballBall, faSuitcaseRolling, faUser, faEnvelope, faCommentDots, faMobileAlt } from '@fortawesome/free-solid-svg-icons'
+import { faInfoCircle, faBirthdayCake, faEnvelopeSquare, faMapMarkerAlt, faTree, faGamepad, faBasketballBall, faSuitcaseRolling, faUser, faEnvelope, faCommentDots, faMobileAlt, faTimes } from '@fortawesome/free-solid-svg-icons'
 // import { brands } from '@fortawesome/free-brands-svg-icons'
 // import { regular } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -16,7 +16,7 @@ Vue.use(VueGoogleMaps, {
   }
 })
 
-library.add(faInfoCircle, faBirthdayCake, faEnvelopeSquare, faMapMarkerAlt, faTree, faGamepad, faBasketballBall, faSuitcaseRolling, faUser, faEnvelope, faCommentDots, faMobileAlt)
+library.add(faInfoCircle, faBirthdayCake, faEnvelopeSquare, faMapMarkerAlt, faTree, faGamepad, faBasketballBall, faSuitcaseRolling, faUser, faEnvelope, faCommentDots, faMobileAlt, faTimes)
 // library.add(brands)
 // library.add(regular)
 Vue.component('font-awesome-icon', FontAwesomeIcon)

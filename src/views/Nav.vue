@@ -92,7 +92,7 @@ export default {
 
 <style scoped>
 #nav {
-  margin-top: 25rem;
+  padding: 20rem;
 }
 #nav p {
   font-size: 24px;

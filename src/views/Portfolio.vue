@@ -1,37 +1,37 @@
 <template>
   <div class="portfolio">
+    <div id="forPop" v-if="isPop"></div>
     <div class="title" v-hotkey="keymap">
       <h1>作品集 Portfolio</h1>
       <button id="me-nav-left" @click="start()">&laquo; pre page</button>
       <button id="me-nav-right" @click="start()">next page&raquo;</button>
     </div>
+    <div class="pop" ref="pop">
+      <span id="removePop" @click="removePop">
+        <font-awesome-icon icon="times" />
+      </span>
+      <div
+        v-for="item in works"
+        :key="item.id"
+        v-show="workId===item.id"
+        class="popContent"
+        ref="popContent"
+      >
+        <div class="popImg" :style="{ backgroundImage: 'url(' + item.img + ')' }"></div>
+        <h2>作品名稱</h2>
+        <h2>{{item.name}}</h2>
+        <h4>{{item.desc}}</h4>
+        <h3>主要使用技術:</h3>
+        <h5>{{item.skills[0]}} / {{item.skills[1]}} / {{item.skills[2]}} /{{item.skills[3]}}</h5>
+      </div>
+    </div>
     <ul class="timeline">
-      <li class="resume">
+      <li v-for="item in works" :key="item.id">
         <a href="#">
-          <div class="timeline-img"></div>
-          <h2>個人履歷網站</h2>
-          <p>以Vue打造</p>
-        </a>
-      </li>
-      <li class="broker">
-        <a href="#">
-          <div class="timeline-img"></div>
-          <h2>企業網站</h2>
-          <p>使用Node.js、express、MySQL打造的企業網站</p>
-        </a>
-      </li>
-      <li class="twitter">
-        <a href="#">
-          <div class="timeline-img"></div>
-          <h2>簡易Twitter社交平台</h2>
-          <p>使用Node.js、express、MySQL打造的簡易Twitter社交平台</p>
-        </a>
-      </li>
-      <li class="book">
-        <a href="#">
-          <div class="timeline-img"></div>
-          <h2>我的記賬本</h2>
-          <p>串接Facebook api 作為帳號連結</p>
+          <div class="timeline-img" :style="{ backgroundImage: 'url(' + item.img + ')' }"></div>
+          <h2>{{item.name}}</h2>
+
+          <button @click="getPop(item.id)" class="timeline-btn" :disabled="isDisabled">See More</button>
         </a>
       </li>
     </ul>
@@ -41,12 +41,65 @@
 <script>
 export default {
   name: "Portfolio",
+  data() {
+    return {
+      isPop: false,
+      workId: "",
+      isDisabled: false,
+      works: [
+        {
+          id: 1,
+          name: "個人履歷網站",
+          desc: "獨立架設企業網站 / 使用Node.js、express、MySQL打造的企業網站",
+          img: "/img/resume.png",
+          pop: "resume",
+          skills: ["Vue.js", "Vue-Router", "CSS3", "SASS/SCSS"],
+        },
+        {
+          id: 2,
+          name: "船舶仲介網站",
+          desc: "使用Node.js、express、MySQL打造的企業網站",
+          img: "/img/broker.png",
+          pop: "broker",
+          skills: ["Node.js", "Express", "MySQL", "Bootstrap"],
+        },
+        {
+          id: 3,
+          name: "簡易Twitter社交平台",
+          desc: "使用Node.js、express、MySQL打造的簡易Twitter社交平台",
+          img: "/img/Simple_twitter.png",
+          pop: "twitter",
+          skills: ["Node.js", "MySQL", "Chai Unit test", "Socket.io"],
+        },
+        {
+          id: 4,
+          name: "我的記賬本",
+          desc: "串接Facebook api 作為帳號連結",
+          img: "/img/book.png",
+          pop: "book",
+          skills: ["Node.js", "Express", "MongoDB", "Connect FB API"],
+        },
+      ],
+    };
+  },
   methods: {
     left() {
       this.$router.push("/aboutme");
     },
     right() {
       this.$router.push("/contact");
+    },
+    getPop: function (index) {
+      this.workId = index;
+      this.isPop = true;
+      this.$refs.pop.style.display = "block";
+      this.isDisabled = true;
+    },
+    removePop: function () {
+      this.isDisabled = false;
+      this.$refs.popContent.innerHTML = "";
+      this.isPop = false;
+      this.$refs.pop.style.display = "none";
     },
   },
   computed: {
@@ -66,8 +119,7 @@ export default {
 }
 
 .portfolio {
-  margin-top: 3rem;
-  height: 100%;
+  padding-top: 1rem;
 }
 
 .title {
@@ -98,29 +150,12 @@ export default {
 .timeline {
   width: 960px;
   margin: auto;
-  padding: 100px 0 200px;
+  padding: 35px 0 250px;
 }
 
-.resume .timeline-img {
+.timeline-img {
   width: 340px;
   height: 200px;
-  background: url(../../public/img/resume.png);
-}
-
-.broker .timeline-img {
-  width: 340px;
-  height: 200px;
-  background: url(../../public/img/broker.png);
-}
-.twitter .timeline-img {
-  width: 340px;
-  height: 200px;
-  background: url(../../public/img/Simple_twitter.png);
-}
-.book .timeline-img {
-  width: 340px;
-  height: 200px;
-  background: url(../../public/img/book.png);
 }
 
 .timeline li {
@@ -139,7 +174,6 @@ export default {
   height: 20px;
   border-radius: 50%;
   background-color: #aaa;
-  z-index: 2;
 }
 .timeline li:nth-child(odd)::before {
   right: -10px;
@@ -180,13 +214,7 @@ export default {
   box-shadow: 3px 3px 5px #888;
   transition: 0.3s;
 }
-.timeline a:hover {
-  background-color: #6fa5f6;
-}
-.timeline a:hover h2,
-.timeline a:hover p {
-  color: #fff;
-}
+
 .timeline h2 {
   color: #333;
   font-family: "Noto Sans TC", sans-serif;
@@ -221,5 +249,98 @@ export default {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 3px 3px 5px #888;
+}
+
+.timeline-btn {
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 3px;
+  border: 0px solid #275498;
+  border-radius: 4px;
+  background: #4a9eff;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#4a9eff),
+    to(#275498)
+  );
+  background: -moz-linear-gradient(top, #4a9eff, #275498);
+  background: linear-gradient(to bottom, #4a9eff, #275498);
+  -webkit-box-shadow: #59beff 0px 0px 0px 2px;
+  -moz-box-shadow: #59beff 0px 0px 0px 2px;
+  box-shadow: #59beff 0px 0px 0px 2px;
+  text-shadow: #17325a 0px 0px 1px;
+  font: normal normal 15px verdana;
+  color: #ffffff;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.timeline-btn:hover,
+.timeline-btn:focus {
+  border: 0px solid #0230b1;
+  background: #0690ff;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#0690ff),
+    to(#0234bf)
+  );
+  background: -moz-linear-gradient(top, #0690ff, #0234bf);
+  background: linear-gradient(to bottom, #0690ff, #0234bf);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.pop {
+  display: none;
+  position: absolute;
+  width: 50%;
+  height: 80%;
+  background: white;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  box-sizing: border-box;
+  border: 5px outset lightgray;
+  border-radius: 10px;
+}
+
+#forPop {
+  width: 100%;
+  height: 1200px;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  filter: Alpha(opacity=60);
+  opacity: 0.4;
+  background: #000000;
+  z-index: 2;
+}
+
+.popImg {
+  width: 800px;
+  height: 400px;
+  background-size: cover;
+  margin: 50px auto 25px;
+}
+
+span {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  display: inline-block;
+  font-size: 20px;
+}
+span:hover {
+  color: red;
+  opacity: 0.6;
 }
 </style>

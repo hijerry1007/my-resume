@@ -59,18 +59,22 @@ export default {
           id: 1,
           name: "個人履歷網站",
           desc: "獨立架設企業網站 / 使用Node.js、express、MySQL打造的企業網站",
-          img: "/img/resume.png",
-          popImg: "/img/resumePop.png",
+          img:
+            "https://github.com/hijerry1007/my-resume/blob/master/public/img/resume.jpg",
+          popImg:
+            "https://github.com/hijerry1007/my-resume/blob/master/public/img/resumePop.jpg",
           skills: ["Vue.js", "Vue-Router", "CSS3", "SASS/SCSS"],
-          github: "https://github.com/hijerry1007/arkshipping",
-          heroku: "https://arkshipping.herokuapp.com/",
+          github: "https://hijerry1007.github.io/my-resume/#/",
+          heroku: null,
         },
         {
           id: 2,
           name: "船舶仲介網站",
           desc: "使用Node.js、express、MySQL打造的企業網站",
-          img: "/img/broker.png",
-          popImg: "/img/brokerPop.png",
+          img:
+            "https://github.com/hijerry1007/my-resume/blob/master/public/img/img/broker.jpg",
+          popImg:
+            "https://github.com/hijerry1007/my-resume/blob/master/public/img/img/brokerPop.jpg",
           skills: ["Node.js", "Express", "MySQL", "Bootstrap"],
           github: "https://github.com/hijerry1007/arkshipping",
           heroku: "https://arkshipping.herokuapp.com/",
@@ -80,8 +84,10 @@ export default {
           name: "簡易Twitter社交平台",
           desc:
             "三人協作專案/ 使用Node.js、express、MySQL打造的簡易Twitter社交平台",
-          img: "/img/Simple_twitter.png",
-          popImg: "/img/Simple_twitterPop.png",
+          img:
+            "https://github.com/hijerry1007/my-resume/blob/master/public/img/Simple_twitter.jpg",
+          popImg:
+            "https://github.com/hijerry1007/my-resume/blob/master/public/img/Simple_twitterPop.jpg",
           skills: ["Node.js", "MySQL", "Chai Unit test", "Socket.io"],
           github:
             "https://github.com/whynotwilson/simple-twitter-express-starter",
@@ -91,8 +97,10 @@ export default {
           id: 4,
           name: "我的記賬本",
           desc: "串接Facebook api 作為帳號連結",
-          img: "/img/book.png",
-          popImg: "/img/bookPop.png",
+          img:
+            "https://github.com/hijerry1007/my-resume/blob/master/public/img/book.jpg",
+          popImg:
+            "https://github.com/hijerry1007/my-resume/blob/master/public/img/bookPop.jpg",
           skills: ["Node.js", "Express", "MongoDB", "Connect FB API"],
           github: "https://github.com/hijerry1007/myAccount",
           heroku: null,

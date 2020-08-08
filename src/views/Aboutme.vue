@@ -1,9 +1,7 @@
 <template>
   <div class="aboutme">
     <div class="title" v-hotkey="keymap">
-      <h1>Jerry 賴志承</h1>
-      <button id="me-nav-left" @click="start()">&laquo; pre page</button>
-      <button id="me-nav-right" @click="start()">next page&raquo;</button>
+      <h1>關於我 About Me</h1>
     </div>
     <div class="me-card">
       <div id="me-picture">
@@ -12,9 +10,9 @@
         </div>
         <div id="me-intro">
           <span>
-            <h1>I'm</h1>
+            <h1>Jerry</h1>
           </span>
-          <h1>Jerry Lai</h1>
+          <h1>賴志承</h1>
           <div class="me-intro-icon">
             <font-awesome-icon icon="info-circle" />
             <h3>Basic Info</h3>
@@ -114,6 +112,9 @@ export default {
       return {
         left: this.left,
         right: this.right,
+        esc: () => {
+          this.$router.push("/nav");
+        },
       };
     },
   },
@@ -125,16 +126,21 @@ export default {
 $time: 1.2s;
 
 .aboutme {
+  font-family: "Noto Sans TC";
   display: flex;
   flex-flow: column;
   padding-top: 1rem;
+  color: #ffffff;
 }
 
 .title {
   width: 1200px;
   margin: 0 auto;
   border-bottom: 3px solid;
+  text-align: center;
   letter-spacing: 0.5em;
+  padding-left: 40px;
+  color: #ffffff;
 }
 
 .me-card {
@@ -149,7 +155,7 @@ $time: 1.2s;
 
 #me-picture #me-picture-banner {
   background-color: #ebebeb;
-  background: linear-gradient(145deg, #ababab 45%, transparent 50%);
+  background: linear-gradient(145deg, #a39d9d 45%, transparent 60%);
   border-radius: 50%;
   width: 230px;
   height: 230px;
@@ -224,18 +230,6 @@ $time: 1.2s;
   text-align: start;
 }
 
-#me-nav-left,
-#me-nav-right {
-  border: 1px solid;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #bbb;
-  background: white;
-  text-transform: uppercase;
-  letter-spacing: 0.125em;
-  margin: 0 10px 10px 0;
-}
-
 #me-intro {
   margin-top: 1rem;
   line-height: 30px;
@@ -285,7 +279,7 @@ ul {
   content: "";
   width: 100%;
   height: 6px;
-  background: gray;
+  background: rgb(71, 71, 71);
   display: block;
   margin-top: 3px;
   border-radius: 3px;
@@ -294,7 +288,7 @@ ul {
 .skill-percentage::before {
   content: "";
   height: 6px;
-  background: #ffc796;
+  background: #1fb801;
   position: absolute;
   margin-top: 3px;
   left: 0;

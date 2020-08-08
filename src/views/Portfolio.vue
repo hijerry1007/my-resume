@@ -3,12 +3,10 @@
     <div id="forPop" v-if="isPop"></div>
     <div class="title" v-hotkey="keymap">
       <h1>作品集 Portfolio</h1>
-      <button id="me-nav-left" @click="start()">&laquo; pre page</button>
-      <button id="me-nav-right" @click="start()">next page&raquo;</button>
     </div>
     <div class="pop" ref="pop">
       <span id="removePop" @click="removePop">
-        <font-awesome-icon icon="times" />
+        <font-awesome-icon class="github" icon="times" />
       </span>
       <div
         v-for="item in works"
@@ -17,7 +15,17 @@
         class="popContent"
         ref="popContent"
       >
-        <div class="popImg" :style="{ backgroundImage: 'url(' + item.img + ')' }"></div>
+        <img class="popImg" :src="item.popImg" />
+
+        <a v-if="item.github" :href="item.github">
+          <div class="github">
+            <font-awesome-icon icon="code-branch" />
+          </div>GitHub
+        </a>
+        <a v-if="item.heroku" :href="item.heroku">
+          <img class="heroku" src="https://img.icons8.com/ios/50/000000/heroku.png" />
+          Heroku
+        </a>
         <h2>作品名稱</h2>
         <h2>{{item.name}}</h2>
         <h4>{{item.desc}}</h4>
@@ -52,32 +60,42 @@ export default {
           name: "個人履歷網站",
           desc: "獨立架設企業網站 / 使用Node.js、express、MySQL打造的企業網站",
           img: "/img/resume.png",
-          pop: "resume",
+          popImg: "/img/resumePop.png",
           skills: ["Vue.js", "Vue-Router", "CSS3", "SASS/SCSS"],
+          github: "https://github.com/hijerry1007/arkshipping",
+          heroku: "https://arkshipping.herokuapp.com/",
         },
         {
           id: 2,
           name: "船舶仲介網站",
           desc: "使用Node.js、express、MySQL打造的企業網站",
           img: "/img/broker.png",
-          pop: "broker",
+          popImg: "/img/brokerPop.png",
           skills: ["Node.js", "Express", "MySQL", "Bootstrap"],
+          github: "https://github.com/hijerry1007/arkshipping",
+          heroku: "https://arkshipping.herokuapp.com/",
         },
         {
           id: 3,
           name: "簡易Twitter社交平台",
-          desc: "使用Node.js、express、MySQL打造的簡易Twitter社交平台",
+          desc:
+            "三人協作專案/ 使用Node.js、express、MySQL打造的簡易Twitter社交平台",
           img: "/img/Simple_twitter.png",
-          pop: "twitter",
+          popImg: "/img/Simple_twitterPop.png",
           skills: ["Node.js", "MySQL", "Chai Unit test", "Socket.io"],
+          github:
+            "https://github.com/whynotwilson/simple-twitter-express-starter",
+          heroku: "https://ac-simple-twitter-starter.herokuapp.com/signin",
         },
         {
           id: 4,
           name: "我的記賬本",
           desc: "串接Facebook api 作為帳號連結",
           img: "/img/book.png",
-          pop: "book",
+          popImg: "/img/bookPop.png",
           skills: ["Node.js", "Express", "MongoDB", "Connect FB API"],
+          github: "https://github.com/hijerry1007/myAccount",
+          heroku: null,
         },
       ],
     };
@@ -107,6 +125,13 @@ export default {
       return {
         left: this.left,
         right: this.right,
+        esc: () => {
+          if (this.isDisabled) {
+            this.removePop();
+          } else {
+            this.$router.push("/nav");
+          }
+        },
       };
     },
   },
@@ -119,6 +144,7 @@ export default {
 }
 
 .portfolio {
+  font-family: "Noto Sans TC";
   padding-top: 1rem;
 }
 
@@ -126,18 +152,15 @@ export default {
   width: 1200px;
   margin: 0 auto;
   border-bottom: 3px solid;
+  text-align: center;
+  letter-spacing: 0.5em;
+  padding-left: 40px;
+  color: #ffffff;
 }
 
-#me-nav-left,
-#me-nav-right {
-  border: 1px solid;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #bbb;
-  background: white;
-  text-transform: uppercase;
-  letter-spacing: 0.125em;
-  margin: 0 10px 10px 0;
+.title h1 {
+  margin: 20px 0;
+  color: white;
 }
 
 .timeline::after {
@@ -217,7 +240,6 @@ export default {
 
 .timeline h2 {
   color: #333;
-  font-family: "Noto Sans TC", sans-serif;
   font-weight: 700;
 }
 .timeline h2::after {
@@ -239,7 +261,6 @@ export default {
 
 .timeline p {
   color: #666;
-  font-family: "Noto Sans TC", sans-serif;
   font-weight: 100;
 }
 .clearcheck {
@@ -299,7 +320,7 @@ export default {
 .pop {
   display: none;
   position: absolute;
-  width: 50%;
+  width: 45%;
   height: 80%;
   background: white;
   z-index: 3;
@@ -311,6 +332,18 @@ export default {
   box-sizing: border-box;
   border: 5px outset lightgray;
   border-radius: 10px;
+  color: black;
+}
+
+.popContent h1,
+.popContent h2,
+.popContent h3,
+.popContent h4,
+.popContent h5,
+.popContent h6 {
+  width: 80%;
+  margin: 5px auto;
+  padding: 10px;
 }
 
 #forPop {
@@ -326,10 +359,38 @@ export default {
 }
 
 .popImg {
-  width: 800px;
-  height: 400px;
-  background-size: cover;
-  margin: 50px auto 25px;
+  display: block;
+  width: 85%;
+  height: auto;
+  margin: 20px auto;
+}
+
+.pop a {
+  display: inline-block;
+  text-decoration: none;
+  width: 100px;
+  position: relative;
+  font-size: 18px;
+  padding: 0 3px;
+  margin: 0 10px;
+  color: #000000;
+}
+
+.pop a:hover {
+  font-size: 20px;
+}
+
+.github {
+  display: inline-block;
+  margin-right: 3px;
+}
+
+.heroku {
+  position: absolute;
+  left: -5px;
+  top: 3px;
+  width: 22px;
+  height: 22px;
 }
 
 span {

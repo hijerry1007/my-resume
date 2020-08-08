@@ -1,8 +1,7 @@
 <template>
   <div class="contact">
     <div class="title" v-hotkey="keymap">
-      <h1>Contact</h1>
-      <button id="me-nav-left" @click="start()">&laquo; pre page</button>
+      <h1>聯絡方式 Contact Me</h1>
     </div>
 
     <div class="contact-box">
@@ -30,12 +29,12 @@
       </div>
       <div class="contact-belowBox">
         <div class="contact-form">
-          <div class="contact-form-title">
-            <h2>Sending Message</h2>
-          </div>
           <form class="form" action="https://formspree.io/jerrydavid123@hotmail.com" method="POST">
+            <div class="contact-form-title">
+              <h2>Sending Message</h2>
+            </div>
             <div class="error-message">
-              <p v-show="!email.valid">Please enter a valid email address.</p>
+              <p v-if="!email.valid">Please enter a valid email address.</p>
             </div>
             <div class="contact-form-content">
               <span class="icon">
@@ -71,9 +70,10 @@
                 placeholder="Message"
               ></textarea>
               <span class="counter">{{ message.text.length }} / {{ message.maxlength }}</span>
+              <div class="btn">
+                <button type="submit" class="contact-form-btn" :disabled="!email.valid">Send</button>
+              </div>
             </div>
-            <button type="submit" v-if="!isSending" class="contact-form-btn">Send</button>
-            <button v-if="isSending" class="contact-form-btn">Sending</button>
           </form>
         </div>
         <div class="contact-map">
@@ -112,7 +112,6 @@ export default {
         text: "",
         maxlength: 200,
       },
-      isSending: false,
       markers: [{ id: 1, position: { lat: 25.0325917, lng: 121.5624999 } }],
     };
   },
@@ -120,12 +119,29 @@ export default {
     left() {
       this.$router.push("/portfolio");
     },
+    checkEmail(email) {
+      const emailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+      if (emailRegExp.test(email)) {
+        this.email.valid = true;
+      } else {
+        this.email.valid = false;
+        this.$$refs.btn.style.disabled = "disabled";
+      }
+    },
   },
   computed: {
     keymap() {
       return {
         left: this.left,
+        esc: () => {
+          this.$router.push("/nav");
+        },
       };
+    },
+  },
+  watch: {
+    "email.value": function (newValue) {
+      this.checkEmail(newValue);
     },
   },
 };
@@ -133,6 +149,7 @@ export default {
 
 <style lang="scss" scoped>
 .contact {
+  font-family: "Noto Sans TC";
   display: flex;
   flex-flow: column;
   padding-top: 1rem;
@@ -151,17 +168,7 @@ export default {
   text-align: center;
   letter-spacing: 0.5em;
   padding-left: 40px;
-}
-
-#me-nav-left {
-  border: 1px solid;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #bbb;
-  background: white;
-  text-transform: uppercase;
-  letter-spacing: 0.125em;
-  margin: 0 10px 10px 0;
+  color: #ffffff;
 }
 
 li {
@@ -174,8 +181,8 @@ li {
     margin-bottom: 25px;
   }
   p {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+    color: #ffffff;
   }
 }
 
@@ -203,11 +210,6 @@ li {
     font-size: 2.3rem;
     right: 24px;
     top: 16px;
-  }
-
-  &:hover {
-    opacity: 0.8;
-    background: lightgoldenrodyellow;
   }
 }
 
@@ -241,11 +243,11 @@ li {
 }
 
 .form {
-  padding: 40px 45px 15px 45px;
+  padding: 5px 45px 35px 45px;
   border-radius: 4px;
   margin: 25px auto 50px;
   width: 300px;
-  height: 450px;
+  height: 520px;
   background-color: #fff;
   box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.8);
 }
@@ -253,7 +255,6 @@ li {
 .contact-form input[type="email"],
 .contact-form input[type="text"] {
   border: solid 2px #cfd3ff;
-  font-family: "Roboto", sans-serif;
   padding: 10px 7px;
   margin-bottom: 15px;
   margin-left: 8px;
@@ -270,22 +271,24 @@ li {
   min-height: 240px;
   max-height: 240px;
   border: solid 2px #cfd3ff;
-  font-family: "Roboto", sans-serif;
   padding: 10px 7px;
   margin-bottom: 15px;
   margin-left: 10px;
   outline: none;
   border-radius: 4px;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 .counter {
   position: absolute;
-  bottom: 18px;
+  bottom: 58px;
   right: 10px;
   font-weight: bold;
 }
 
+.btn {
+  padding-top: 10px;
+}
 .contact-form-btn {
   width: 150px;
   height: 30px;
@@ -312,6 +315,8 @@ li {
   color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
+  outline: none;
+  position: relative;
 }
 
 .contact-form-btn:hover {
@@ -325,5 +330,12 @@ li {
   background: -moz-linear-gradient(top, #59beff, #2f65b6);
   background: linear-gradient(to bottom, #59beff, #2f65b6);
   color: #ffffff;
+  outline: none;
+}
+
+.error-message {
+  color: red;
+  margin-top: -5px;
+  margin-bottom: -10px;
 }
 </style>

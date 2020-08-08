@@ -33,7 +33,7 @@
           <div class="contact-form-title">
             <h2>Sending Message</h2>
           </div>
-          <form class="form" @submit.prevent="submit">
+          <form class="form" action="https://formspree.io/jerrydavid123@hotmail.com" method="POST">
             <div class="error-message">
               <p v-show="!email.valid">Please enter a valid email address.</p>
             </div>
@@ -49,7 +49,7 @@
               </span>
               <input
                 type="email"
-                name="email"
+                name="_replyto"
                 id="email"
                 required
                 :class="{ email , error: !email.valid }"
@@ -63,7 +63,7 @@
               </span>
               <textarea
                 class="message"
-                name="textarea"
+                name="message"
                 id="textarea"
                 required
                 v-model="message.text"
@@ -72,7 +72,7 @@
               ></textarea>
               <span class="counter">{{ message.text.length }} / {{ message.maxlength }}</span>
             </div>
-            <button v-if="!isSending" class="contact-form-btn">Send</button>
+            <button type="submit" v-if="!isSending" class="contact-form-btn">Send</button>
             <button v-if="isSending" class="contact-form-btn">Sending</button>
           </form>
         </div>

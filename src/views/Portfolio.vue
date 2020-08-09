@@ -65,7 +65,7 @@ export default {
       works: [
         {
           id: 1,
-          name: "個人履歷網站",
+          name: "Vue框架-個人履歷網站",
           desc: "純使用Vue.js前端框架所架設的靜態網站",
           img:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/resume.jpg",
@@ -83,7 +83,7 @@ export default {
         },
         {
           id: 2,
-          name: "船舶仲介網站",
+          name: "MySQL-企業船舶資料庫網站",
           desc: "使用Node.js、express、MySQL打造的企業網站",
           img:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/broker.jpg",
@@ -101,9 +101,9 @@ export default {
         },
         {
           id: 3,
-          name: "簡易Twitter社交平台",
+          name: "團體專案-Twitter社交平台",
           desc:
-            "三人協作社交平台專案/個人負責User部分所有路由邏輯及頁面、標記好友功能",
+            "團隊協作社交平台專案/個人負責User部分所有路由邏輯及頁面、標記好友功能。版本控制:Github",
           img:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/Simple_twitter.jpg",
           popImg:
@@ -121,7 +121,7 @@ export default {
         },
         {
           id: 4,
-          name: "我的記賬本",
+          name: "MongoDB-我的記賬本",
           desc: "用MongoDB作為資料庫架設的簡易記帳應用程式",
           img:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/book.jpg",

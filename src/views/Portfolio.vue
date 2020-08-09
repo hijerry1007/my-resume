@@ -26,11 +26,13 @@
           <img class="heroku" src="https://img.icons8.com/ios/50/000000/heroku.png" />
           Heroku
         </a>
-        <h2>作品名稱</h2>
-        <h2>{{item.name}}</h2>
-        <h4>{{item.desc}}</h4>
-        <h3>主要使用技術:</h3>
-        <h5>{{item.skills[0]}} / {{item.skills[1]}} / {{item.skills[2]}} /{{item.skills[3]}}</h5>
+        <div class="popDesc">
+          <h2>作品名稱</h2>
+          <h2>{{item.name}}</h2>
+          <h4>{{item.desc}}</h4>
+          <h3>主要使用技術:</h3>
+          <h5>{{item.skills[0]}} / {{item.skills[1]}} / {{item.skills[2]}} /{{item.skills[3]}}/ {{item.skills[4]}}</h5>
+        </div>
       </div>
     </div>
     <ul class="timeline">
@@ -58,12 +60,18 @@ export default {
         {
           id: 1,
           name: "個人履歷網站",
-          desc: "獨立架設企業網站 / 使用Node.js、express、MySQL打造的企業網站",
+          desc: "純使用Vue.js前端框架所架設的靜態網站",
           img:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/resume.jpg",
           popImg:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/resumePop.jpg",
-          skills: ["Vue.js", "Vue-Router", "CSS3", "SASS/SCSS"],
+          skills: [
+            "Vue.js",
+            "Vue-Router",
+            "CSS3&SCSS",
+            "GoogleMapAPI",
+            "Formspree純前端郵件",
+          ],
           github: "https://hijerry1007.github.io/my-resume/#/",
           heroku: null,
         },
@@ -75,7 +83,13 @@ export default {
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/broker.jpg",
           popImg:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/brokerPop.jpg",
-          skills: ["Node.js", "Express", "MySQL", "Bootstrap"],
+          skills: [
+            "Node.js",
+            "Express",
+            "MySQL",
+            "Bootstrap",
+            "VesselFinderAPI",
+          ],
           github: "https://github.com/hijerry1007/arkshipping",
           heroku: "https://arkshipping.herokuapp.com/",
         },
@@ -83,12 +97,18 @@ export default {
           id: 3,
           name: "簡易Twitter社交平台",
           desc:
-            "三人協作專案/ 使用Node.js、express、MySQL打造的簡易Twitter社交平台",
+            "三人協作社交平台專案/個人負責User部分所有路由邏輯及頁面、標記好友功能",
           img:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/Simple_twitter.jpg",
           popImg:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/Simple_twitterPop.jpg",
-          skills: ["Node.js", "MySQL", "Chai Unit test", "Socket.io"],
+          skills: [
+            "Node.js",
+            "MySQL",
+            "Chai Unit test",
+            "Socket.io",
+            "debounce",
+          ],
           github:
             "https://github.com/whynotwilson/simple-twitter-express-starter",
           heroku: "https://ac-simple-twitter-starter.herokuapp.com/signin",
@@ -96,12 +116,18 @@ export default {
         {
           id: 4,
           name: "我的記賬本",
-          desc: "串接Facebook api 作為帳號連結",
+          desc: "用MongoDB作為資料庫架設的簡易記帳應用程式",
           img:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/book.jpg",
           popImg:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/bookPop.jpg",
-          skills: ["Node.js", "Express", "MongoDB", "Connect FB API"],
+          skills: [
+            "Node.js",
+            "Express",
+            "MongoDB",
+            "Facebook account API",
+            "Chart.js",
+          ],
           github: "https://github.com/hijerry1007/myAccount",
           heroku: null,
         },
@@ -343,17 +369,6 @@ export default {
   color: black;
 }
 
-.popContent h1,
-.popContent h2,
-.popContent h3,
-.popContent h4,
-.popContent h5,
-.popContent h6 {
-  width: 80%;
-  margin: 5px auto;
-  padding: 10px;
-}
-
 #forPop {
   width: 100%;
   height: 1200px;
@@ -373,6 +388,11 @@ export default {
   margin: 20px auto;
 }
 
+.popDesc {
+  width: 100%;
+  height: auto;
+}
+
 .pop a {
   display: inline-block;
   text-decoration: none;
@@ -382,10 +402,8 @@ export default {
   padding: 0 3px;
   margin: 0 10px;
   color: #000000;
-}
-
-.pop a:hover {
-  font-size: 20px;
+  background: rgb(199, 253, 253);
+  border-radius: 10px;
 }
 
 .github {
@@ -395,10 +413,18 @@ export default {
 
 .heroku {
   position: absolute;
-  left: -5px;
+  left: -2px;
   top: 3px;
-  width: 22px;
-  height: 22px;
+  width: 21px;
+  height: 21px;
+}
+
+.pop a:hover {
+  font-size: 20px;
+  .heroku {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 span {

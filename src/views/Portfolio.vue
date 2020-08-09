@@ -27,11 +27,17 @@
           Heroku
         </a>
         <div class="popDesc">
-          <h2>作品名稱</h2>
-          <h2>{{item.name}}</h2>
+          <h2>作品名稱: {{item.name}}</h2>
+          <h2></h2>
           <h4>{{item.desc}}</h4>
           <h3>主要使用技術:</h3>
-          <h5>{{item.skills[0]}} / {{item.skills[1]}} / {{item.skills[2]}} /{{item.skills[3]}}/ {{item.skills[4]}}</h5>
+          <div class="skills">
+            <div class="skill">{{item.skills[0]}}</div>
+            <div class="skill">{{item.skills[1]}}</div>
+            <div class="skill">{{item.skills[2]}}</div>
+            <div class="skill">{{item.skills[3]}}</div>
+            <div class="skill">{{item.skills[4]}}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -67,10 +73,10 @@ export default {
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/resumePop.jpg",
           skills: [
             "Vue.js",
-            "Vue-Router",
-            "CSS3&SCSS",
-            "GoogleMapAPI",
-            "Formspree純前端郵件",
+            "Vue-Router-SPA",
+            "CSS3&SCSS -切版及動畫",
+            "串接GoogleMapAPI-標記居住地",
+            "Formspree純前端郵件-發送郵件功能",
           ],
           github: "https://hijerry1007.github.io/my-resume/#/",
           heroku: null,
@@ -84,11 +90,11 @@ export default {
           popImg:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/brokerPop.jpg",
           skills: [
-            "Node.js",
-            "Express",
-            "MySQL",
+            "Node.js&Express",
+            "Restful API實作後台船舶資料Crud功能",
+            "MySQL-後台資料庫",
             "Bootstrap",
-            "VesselFinderAPI",
+            "VesselFinderAPI-實作瀏覽船舶位置功能",
           ],
           github: "https://github.com/hijerry1007/arkshipping",
           heroku: "https://arkshipping.herokuapp.com/",
@@ -103,11 +109,11 @@ export default {
           popImg:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/Simple_twitterPop.jpg",
           skills: [
-            "Node.js",
-            "MySQL",
+            "Node.js&Express",
+            "MySQL-後台資料庫",
+            "Socket.io&debounce&JS Dom操作-實作標記好友功能",
+            "Restful API實作User部分路由及頁面",
             "Chai Unit test",
-            "Socket.io",
-            "debounce",
           ],
           github:
             "https://github.com/whynotwilson/simple-twitter-express-starter",
@@ -124,9 +130,9 @@ export default {
           skills: [
             "Node.js",
             "Express",
-            "MongoDB",
-            "Facebook account API",
-            "Chart.js",
+            "MongoDB資料庫-可依時間及支出類別篩選資料庫",
+            "Passport實作帳號註冊登入功能並串接FacebookAPI",
+            "Chart.js-實作圓餅圖分析支出功能",
           ],
           github: "https://github.com/hijerry1007/myAccount",
           heroku: null,
@@ -355,7 +361,7 @@ export default {
   display: none;
   position: absolute;
   width: 45%;
-  height: 80%;
+  height: 780px;
   background: white;
   z-index: 3;
   left: 0;
@@ -391,6 +397,24 @@ export default {
 .popDesc {
   width: 100%;
   height: auto;
+}
+
+.skills {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill {
+  background: burlywood;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pop a {

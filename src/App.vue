@@ -20,13 +20,14 @@
 html {
   height: 100%;
   margin: 0;
-  background: linear-gradient(
-    90deg,
-    rgb(250, 250, 255) 0%,
-    rgb(109, 109, 250) 25%,
-    rgb(109, 109, 250) 65%,
-    rgb(250, 250, 250) 100%
-  );
+  // background: linear-gradient(
+  //   90deg,
+  //   rgb(250, 250, 255) 0%,
+  //   rgb(109, 109, 250) 25%,
+  //   rgb(109, 109, 250) 65%,
+  //   rgb(250, 250, 250) 100%
+  // );
+  background: #3e9a99;
   position: relative;
 }
 

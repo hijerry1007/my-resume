@@ -157,14 +157,14 @@ $time: 1.2s;
   background-color: #ebebeb;
   background: linear-gradient(145deg, #a39d9d 45%, transparent 60%);
   border-radius: 50%;
-  width: 230px;
-  height: 230px;
+  width: 250px;
+  height: 250px;
   position: relative;
 }
 
 #me-picture-img {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border: 1px solid white;
   border-radius: 50%;
   position: absolute;
@@ -173,7 +173,7 @@ $time: 1.2s;
   top: 15px;
   background-image: url(../../public/img/avatar.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-position: -3px -3px;
 }
 
 #me-picture-img:hover {
@@ -225,9 +225,9 @@ $time: 1.2s;
 }
 
 #me-desc h3 {
-  font-size: 20px;
-  line-height: 40px;
+  line-height: 25px;
   text-align: start;
+  letter-spacing: 0.25rem;
 }
 
 #me-intro {
@@ -288,7 +288,7 @@ ul {
 .skill-percentage::before {
   content: "";
   height: 6px;
-  background: #1fb801;
+  background: #919191;
   position: absolute;
   margin-top: 3px;
   left: 0;

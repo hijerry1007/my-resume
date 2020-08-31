@@ -65,7 +65,7 @@ export default {
       works: [
         {
           id: 1,
-          name: "Vue框架-GoogleMap尋找鄰近餐廳",
+          name: "Vue-GoogleMap尋找鄰近餐廳",
           desc: "使用Vue前端框架搭配GoogleMapApi技術練習",
           img:
             "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/gmap.jpg",
@@ -222,10 +222,11 @@ export default {
   width: 100%;
   clear: both;
 }
+
 .timeline {
   width: 960px;
   margin: auto;
-  padding: 35px 0 250px;
+  padding: 35px 0 150px;
 }
 
 .timeline-img {

@@ -65,6 +65,18 @@ export default {
       works: [
         {
           id: 1,
+          name: "Vue框架-GoogleMap尋找鄰近餐廳",
+          desc: "使用Vue前端框架搭配GoogleMapApi技術練習",
+          img:
+            "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/gmap.jpg",
+          popImg:
+            "https://raw.githubusercontent.com/hijerry1007/my-resume/master/public/img/gmapPop.jpg",
+          skills: ["Vue.js", "Vuex", "Bootstrap", "GoogleMapAPI", "Axios"],
+          github: "https://hijerry1007.github.io/googleMapApi_test/",
+          heroku: null,
+        },
+        {
+          id: 2,
           name: "Vue框架-個人履歷網站",
           desc: "純使用Vue.js前端框架所架設的靜態網站",
           img:
@@ -82,7 +94,7 @@ export default {
           heroku: null,
         },
         {
-          id: 2,
+          id: 3,
           name: "MySQL-企業船舶資料庫網站",
           desc: "使用Node.js、express、MySQL打造的企業網站",
           img:
@@ -100,7 +112,7 @@ export default {
           heroku: "https://arkshipping.herokuapp.com/",
         },
         {
-          id: 3,
+          id: 4,
           name: "團體專案-Twitter社交平台",
           desc:
             "團隊協作社交平台專案/個人負責User部分所有路由邏輯及頁面、標記好友功能。版本控制:Github",
@@ -120,7 +132,7 @@ export default {
           heroku: "https://ac-simple-twitter-starter.herokuapp.com/signin",
         },
         {
-          id: 4,
+          id: 5,
           name: "MongoDB-我的記賬本",
           desc: "用MongoDB作為資料庫架設的簡易記帳應用程式",
           img:
